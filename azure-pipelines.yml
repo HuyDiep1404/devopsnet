@@ -20,7 +20,7 @@ steps:
 variables:
   buildConfiguration: 'Release'
 
-steps:
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
@@ -33,15 +33,14 @@ steps:
     command: build
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
-steps:
+
 - task: DotNetCoreCLI@2
   displayName: 'Install dotnetsay'
   inputs:
     command: custom
     custom: tool
     arguments: 'install -g dotnetsay'
-steps:
-# ...
+
 # do this after other tasks such as building
 - task: DotNetCoreCLI@2
   inputs:
